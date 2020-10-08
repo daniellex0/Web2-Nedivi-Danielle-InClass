@@ -1,5 +1,9 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import styled from 'styled-components';
+
+/* Data ---------------------------*/
+import auction from '../common/static_data/auction.js';
 
 /* Components ---------------------------*/
 import Content from './Shared/Content.jsx';
@@ -11,16 +15,23 @@ import Nav from './Shared/Nav.jsx';
 const Main = () => {
 
     return (
-        <div className='Main'>
+        <MainStyled className='Main'>
             <BrowserRouter>
-                <h1>In Class</h1>
-                <Content />
-                <Footer />
                 <Header />
                 <Nav />
+                <Content auction={ auction } />
+                <Footer />
             </BrowserRouter>
-        </div>
+        </MainStyled>
     );
 }
 
 export default Main;
+
+const MainStyled = styled.div`
+    background-color: white;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+`;

@@ -10,12 +10,12 @@ import Contact from '../Pages/Contact.jsx';
 import Homework from '../Pages/Homework/Homework.jsx';
 
 
-const Content = () => {
+const Content = ({auction}) => {
 
     return (
         <ContentStyled className='Content'>
             <Switch>
-                <Route path='/login' component={ Login } />
+                <Route path='/login' component={ () => <Login auction={ auction } /> } />
                 <Route path='/auction' component={ Auction } />
                 <Route path='/contact' component={ Contact } />
                 <Route path='/homework' component={ Homework } />
