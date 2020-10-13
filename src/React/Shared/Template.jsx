@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import Article from './Article.jsx';
 import Aside from './Aside.jsx';
 
-const Template = ({title, children, aside=true, auction}) => {
+const Template = ({title, children, aside=true }) => {
 
     return (
         <TemplateStyled className='Template'>
-            { aside && <Aside auction={ auction } /> }
+            { aside && <Aside /> }
             <Article>
                 <h1>{title}</h1>
                 <div className="content">

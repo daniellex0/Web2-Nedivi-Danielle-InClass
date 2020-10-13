@@ -15,7 +15,7 @@ const Content = ({auction}) => {
     return (
         <ContentStyled className='Content'>
             <Switch>
-                <Route path='/login' component={ () => <Login auction={ auction } /> } />
+                <Route path='/login' component={ Login } />
                 <Route path='/auction' component={ Auction } />
                 <Route path='/contact' component={ Contact } />
                 <Route path='/homework' component={ Homework } />

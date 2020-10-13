@@ -4,11 +4,11 @@ import styled from 'styled-components';
 /* Components ---------------------------*/
 import Template from '../Shared/Template.jsx';
 
-const Login = ({auction}) => {
+const Login = () => {
 
     return (
         <LoginStyled className='Login'>
-            <Template title='Login' auction={ auction }>
+            <Template title='Login'>
                 Login
             </Template>  
         </LoginStyled>
