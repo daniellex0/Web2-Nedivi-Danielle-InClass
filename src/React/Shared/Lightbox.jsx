@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import keycode from 'keycode';
 
 /* Components ---------------------------*/
-import Button from 'React/Shared/Controls/Button.jsx';
+import Button from 'React/Shared/UniversalForm/Controls/Button.jsx';
 
 const Lightbox = ({
     children,
@@ -18,7 +18,7 @@ const Lightbox = ({
             switch(keycode(e)) {
                 case 'esc':
                     e.stopPropagation();
-                    handleOnClose();
+                    onClose();
                     break;
                 default:
                     return false;
@@ -32,25 +32,21 @@ const Lightbox = ({
             document.removeEventListener('keydown', handleKeyDown);
         }
 
-    }, []);
+    }, [onClose]);
 
-    const handleOnClose = () => {
-        onClose();
-    }
-
-    const stopBubbling = (e) => {
-        e.stopPropagation();
+    const stopBubbling = (event) => {
+        event.stopPropagation();
     }
 
     if (!isOpen) {return '';}
 
     return (
-        <LightboxStyled className='Lightbox' onClick={ handleOnClose }>
+        <LightboxStyled className='Lightbox' onClick={ onClose }>
             <div className="theLight" onClick={ stopBubbling }>
                 <header>
                     <h2>{headerText}</h2> 
                 </header>
-                <Button className='closeLightbox' onClick={ handleOnClose }>
+                <Button className='closeLightbox' onClick={ onClose }>
                     X
                 </Button>
                 <div className="content">
