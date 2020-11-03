@@ -13,7 +13,7 @@ const AddRemoveLot = ({ lot }) => {
     const dispatch = useDispatch();
 
     // Grab Redux Store
-    const { bidManager: { bids } } = useSelector((state) => state);
+    const { bidManager: { bids }, user } = useSelector((state) => state);
 
     // Check if this lot is in our bids
     const isInBids = bids.find((bid) => {
@@ -32,6 +32,8 @@ const AddRemoveLot = ({ lot }) => {
         console.log('Remove lot'); 
         dispatch(removeLotToBids(lot));
     }
+
+    if (!user.isLoggedIn) { return ''; }
 
     return (
         <AddRemoveLotStyled className='AddRemoveLot'>
