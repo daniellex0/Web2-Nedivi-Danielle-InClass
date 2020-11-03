@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LabelInput = ({children, label, formField}) => {
+/* Components ---------------------------*/
+import Input from '../Controls/Input.jsx';
+
+const LabelInput = ({formField}) => {
 
     return (
         <LabelInputStyled className='LabelInput'>
             <div className="label-container">
-                <label htmlFor={ formField.id }>{label}</label>
+                <label htmlFor={ formField.id }>{formField.label}</label>
             </div>
             <div className="control">
-                {children} 
+                <Input formField={ formField } />
             </div>
         </LabelInputStyled>
     );

@@ -2,14 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Button = ({
+    id,
     children, 
     onClick,
     type= 'button',
     className='',
+    unstyled=false,
 }) => {
+
+    const ButtonStyled = (unstyled) ? ButtonUnstyled : ButtonWithStyles;
 
     return (
         <ButtonStyled 
+            id={ id }
             className={`Button ${className} ` }
             onClick={ onClick }
             type={ type }
@@ -21,7 +26,7 @@ const Button = ({
 
 export default Button;
 
-const ButtonStyled = styled.button`
+const ButtonWithStyles = styled.button`
     background-color: #f19e37;
 
     display: inline-block;
@@ -40,5 +45,18 @@ const ButtonStyled = styled.button`
 
     &.focus {
         background-color: #ee5b37;
+    }
+`;
+
+const ButtonUnstyled = styled.button`
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    &:active, &:focus {
+        outline: solid 1px blue;
     }
 `;

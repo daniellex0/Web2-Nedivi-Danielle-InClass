@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
+/* Context ---------------------------*/
+import Context from './context/index.js';
+import * as UFActions from './context/actions.js';
+
+/* Components ---------------------------*/
 import Button from 'React/Shared/UniversalForm/Controls/Button.jsx';
 
-const Feedback = ({ formStatus, onClose, feedbackMessage }) => {
+const Feedback = () => {
+    /*---------------------------
+    | State and Props
+    ---------------------------*/
+const { state, dispatch } = useContext(Context);
+
+const {
+    formStatus,
+    feedbackMessage,
+} = state;
+
+const handleClose = () => {
+    dispatch(UFActions.statusUpdate('pending'));
+}
 
     if (formStatus === 'pending') {
         return '';
     }
 
-    const theColor = (formStatus == 'success') ? 'green':'maroon';
+    const theColor = (formStatus === 'success') ? 'green':'maroon';
 
     return (
         <FeedbackStyled className='Feedback' theColor={ theColor }>
             <Button
-                onClick= { onClose }
+                onClick= { handleClose }
                 className='close'
             >
                 X

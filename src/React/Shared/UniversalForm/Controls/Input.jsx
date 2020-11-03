@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-const Input = ({ formField, onChange }) => {
+/* Context ---------------------------*/
+import Context from '../context/index.js';
+import * as UFActions from '../context/actions.js';
+
+const Input = ({ formField }) => {
+
+    const { state, dispatch } = useContext(Context);
+
+    const {
+        formData
+    } = state;
 
     const handleOnChange = (e) => {
             formField.value = e.target.value;
-            onChange(formField);
+            dispatch(UFActions.handleOnInputChange(formField, formData));
         }
 
     return (
