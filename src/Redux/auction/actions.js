@@ -18,7 +18,7 @@ export const loadAuctions = () => {
     return (dispatch, getState) => {
         API.get('/auctions/current')
             .then((apiResponse) => {
-                dispatch(auctionCurrentSet(apiResponse.data.payload.auction))
+                dispatch(auctionCurrentSet(apiResponse.data.payload.currentAuction))
             });
     }
 }
