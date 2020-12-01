@@ -67,7 +67,7 @@ export const handleOnSubmit = (state, dispatch) => {
     } else {
 
         // Let parent know of submission
-        API.post(apiEndpoint, formData).then((apiResponse) => {
+        API.post(apiEndpoint, postData).then((apiResponse) => {
 
             // all passes we will submit data
             dispatch(feedbackMessageUpdate(`'Eureka, you passed our validation.'`));
