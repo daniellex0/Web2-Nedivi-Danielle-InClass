@@ -34,7 +34,9 @@ export const loadUserBids = () => {
         API.get('/bidSubmission/getBids').then((apiResponse) => {
             console.log('apiResponse', apiResponse);
 
-            const filtered = filterBids(apiResponse.data.payload.bidSubmissions);
+            const bidSubmissions = apiResponse.data.payload.bidSubmissions ? apiResponse.data.payload.bidSubmissions : [];
+
+            const filtered = filterBids(bidSubmissions);
             dispatch(currentUpdate(filtered.current));
             dispatch(pastUpdate(filtered.past));
         });
@@ -67,7 +69,10 @@ export const addLotToBids = (lot) => {
         }
 
         // Grab existing state
-        const { bidManager: { current: { currentBidSubmission } } } = getState();
+        const { bidManager: { current: currentBidSubmission } } = getState();
+
+        console.log('currentBidSubmission', currentBidSubmission);
+
 
         if (!currentBidSubmission.bids) {
             API.post('/bidSubmission/addLot', postData).then((apiResponse) => {

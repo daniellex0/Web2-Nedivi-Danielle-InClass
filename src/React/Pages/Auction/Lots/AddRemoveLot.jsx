@@ -13,10 +13,10 @@ const AddRemoveLot = ({ lot }) => {
     const dispatch = useDispatch();
 
     // Grab Redux Store
-    const { bidManager: { bids }, user } = useSelector((state) => state);
+    const { bidManager: { current: { bids } }, user } = useSelector((state) => state);
 
     // Check if this lot is in our bids
-    const isInBids = bids.find((bid) => {
+    const isInBids = bids && bids.find((bid) => {
         return bid.lot.id === lot.id;
     });
 
